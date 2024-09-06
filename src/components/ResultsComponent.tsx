@@ -1,11 +1,20 @@
-import React from 'react'
+import React from 'react';
+import ItemComponent from './ItemComponent';
 
-type Props = {}
-
-const ResultsComponent = (props: Props) => {
-  return (
-    <div>ResultsComponent</div>
-  )
+interface ResultsProps {
+  results: any[];
 }
 
-export default ResultsComponent
+const ResultsComponent: React.FC<ResultsProps> = ({ results }) => {
+  if (results.length === 0) return <div>No Pokémon found.</div>;
+
+  return (
+    <div className="flex items-center">
+      {results.map((result, index) => (
+        <ItemComponent key={index} item={result} />
+      ))}
+    </div>
+  );
+};
+
+export default ResultsComponent;
