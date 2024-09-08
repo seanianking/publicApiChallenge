@@ -1,17 +1,15 @@
 import React from 'react';
 import ItemComponent from './ItemComponent';
 
-interface ResultsProps {
+interface ResultsComponentProps {
   results: any[];
 }
 
-const ResultsComponent: React.FC<ResultsProps> = ({ results }) => {
-  if (results.length === 0) return <div>No Pokémon found.</div>;
-
+const ResultsComponent: React.FC<ResultsComponentProps> = ({ results }) => {
   return (
-    <div className="flex items-center">
-      {results.map((result, index) => (
-        <ItemComponent key={index} item={result} />
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 p-4">
+      {results.map((result) => (
+        <ItemComponent key={result.name} item={result} />
       ))}
     </div>
   );

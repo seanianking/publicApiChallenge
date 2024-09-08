@@ -1,20 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const useApiHook = () => {
   const [data, setData] = useState<any[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const fetchData = async (url: string) => {
     setLoading(true);
+    setError(null);
     try {
       const response = await fetch(url);
-      if (!response.ok) throw new Error('Network response was not ok');
       const result = await response.json();
-      setData([result]);
-      setError(null);
-    } catch (err:any) {
-      setError(err.message);
+      setData(result.results ? result.results : [result]);
+    } catch (err) {
+      setError('Failed to fetch data');
     } finally {
       setLoading(false);
     }

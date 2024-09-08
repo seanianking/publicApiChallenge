@@ -1,27 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-interface SearchProps {
+interface SearchComponentProps {
   onSearch: (query: string) => void;
   onRandom: () => void;
+  onToggle: () => void;
+  toggleText: string;
 }
 
-const SearchComponent: React.FC<SearchProps> = ({ onSearch, onRandom }) => {
-  const [query, setQuery] = useState('');
+const SearchComponent: React.FC<SearchComponentProps> = ({
+  onSearch,
+  onRandom,
+  onToggle,
+  toggleText,
+}) => {
+  const [query, setQuery] = useState("");
+
+  const handleSearch = () => {
+    if (query.trim()) {
+      onSearch(query);
+    }
+  };
 
   return (
-    <div className="container mx-auto flex-1">
+    <div className="flex justify-center p-4">
       <input
         type="text"
-        className="input-field"
+        className="border rounded p-2 w-full max-w-lg text-white"
         placeholder="Search Pokémon..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <button className="btn-primary" onClick={() => onSearch(query)}>
+      <button
+        className="bg-blue-500 text-white p-2 rounded ml-2"
+        onClick={handleSearch}
+      >
         Search
       </button>
-      <button className="btn-secondary" onClick={onRandom}>
+      <button
+        className="bg-green-500 text-white p-2 rounded ml-2"
+        onClick={onRandom}
+      >
         Random
+      </button>
+      <button
+        className="bg-red-500 text-white p-2 rounded ml-2"
+        onClick={onToggle}
+      >
+        {toggleText}
       </button>
     </div>
   );
