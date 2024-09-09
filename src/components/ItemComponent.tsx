@@ -25,14 +25,16 @@ const ItemComponent: React.FC<ItemComponentProps> = ({ item }) => {
     setIsFavorite(!isFavorite);
   };
 
+ const capitalize = <T extends string>(s: T) => (s[0].toUpperCase() + s.slice(1)) as Capitalize<typeof s>;
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: .75 }}
-      className="border rounded p-4 bg-white shadow"
+      className="border rounded p-4 bg-white shadow flex flex-col items-center"
     >
-      <h2 className="text-xl font-bold mb-2">{item.name}</h2>
+      <h2 className="text-xl font-bold mb-2">{capitalize(item.name)}</h2>
       <img src={item.sprites.front_default} alt={item.name} />
       <p>Height: {item.height}</p>
       <p>Weight: {item.weight}</p>
