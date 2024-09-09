@@ -18,6 +18,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
   const handleSearch = () => {
     if (query.trim()) {
       onSearch(query);
+      setQuery("")
     }
   };
 
