@@ -7,7 +7,7 @@ interface ResultsComponentProps {
 
 const ResultsComponent: React.FC<ResultsComponentProps> = ({ results }) => {
   return (
-    <div className="grid  p-4">
+    <div className="grid w-full p-4">
       {results.map((result) => (
         <ItemComponent key={result.name} item={result} />
       ))}

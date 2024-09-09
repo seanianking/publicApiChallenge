@@ -23,10 +23,10 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
   };
 
   return (
-    <div className="flex justify-center p-4">
+    <div className="flex justify-center p-4 ">
       <input
         type="text"
-        className="border rounded p-2 w-full max-w-lg text-white"
+        className="border rounded p-2 w-full text-white"
         placeholder="Search Pokémon..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}

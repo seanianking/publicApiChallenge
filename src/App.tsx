@@ -29,7 +29,7 @@ const App: React.FC = () => {
           <p>Loading...</p>
         </div>
       )}
-      {error && <p className="text-center text-red-500">Error loading data</p>}
+      {error && <p className="text-center text-red-500">Pokemon not found</p>}
       {viewFavorites ? (
         <FavoritesDisplay/>
       ) : (
